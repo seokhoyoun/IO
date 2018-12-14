@@ -45,7 +45,7 @@ public class SungjukProcess {
 			int eng = dis.readInt();
 			int sum = dis.readInt();
 			double avg = (int)(dis.readDouble()*100)/100.00;
-			System.out.printf("%d점\t%d점\t%d점\t총점 : %d\t평균 : %.2f\n",kor,math,eng,sum,avg);
+			System.out.printf("%d점\t%d점\t%d점\t총점 :%d\t평균 :%.2f\n",kor,math,eng,sum,avg);
 			totalSum += sum;
 			totalAvg += avg;
 			count++;
@@ -55,6 +55,7 @@ public class SungjukProcess {
 			System.out.printf("총 합계 : %d\n총 평균 : %.2f\n",totalSum,totalAvg/count);
 			System.out.println("score.dat 파일 읽기 완료.");
 		} catch (IOException e) {
+			System.out.println("파일을 읽을 수 없습니다.");
 			e.printStackTrace();
 		}
 		

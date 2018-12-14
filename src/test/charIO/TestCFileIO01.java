@@ -21,7 +21,7 @@ public class TestCFileIO01 {
 		System.out.println(fileName+" 저장 완료");
 		
 		try {
-			fw = new FileWriter(fileName);
+			fw = new FileWriter(fileName, true);
 			// 대상 파일이 없으면 파일을 새로 만듦
 			// 대상 파일이 있으면, 새로쓰기 상태로 열림.
 			fw.write('A');
@@ -58,7 +58,7 @@ public class TestCFileIO01 {
 	public static void main(String[] args) {
 		// 문자 기반 파일 입출력 테스트
 		TestCFileIO01 test = new TestCFileIO01();
-//		test.fileSave();
+		test.fileSave();
 		test.fileRead();
 	}
 
