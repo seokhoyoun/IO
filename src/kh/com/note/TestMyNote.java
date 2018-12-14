@@ -23,7 +23,7 @@ public class TestMyNote {
 		case 1 : mn.fileSave(); break;
 		case 2 : mn.fileOpen(); break;
 		case 3 : mn.fileEdit(); break;
-		case 4 : break;
+		case 4 : return;
 		
 			}
 		}while(true);
