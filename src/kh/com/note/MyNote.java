@@ -24,7 +24,8 @@ public class MyNote {
 		MyNote mn = new MyNote();
 		String line = null;
 		while(!(line = sc.nextLine()).equals("exit")) {
-			sb.append(line);
+			sb.append(line).append("\n");
+			
 		}
 		System.out.println("저장하시겠습니까? (y/n) : ");
 		if((sc.next().toLowerCase().charAt(0)) == 'y') {
@@ -41,8 +42,7 @@ public class MyNote {
 			
 			try(BufferedWriter bw = new BufferedWriter(new FileWriter(fName))){
 				bw.write(sb.toString());
-				bw.newLine();
-				System.out.println(fName + " 파일에 성공적으로 저장하였습니다.");
+				System.out.println(fName + " 파일에 성공적으로 저장하였습니다.\n");
 			}catch (IOException e) {
 				e.printStackTrace();
 			} 
@@ -52,27 +52,49 @@ public class MyNote {
 	}
 	
 	public void fileOpen() {
+		StringBuilder sb = new StringBuilder(); String line = null;
 		System.out.print("불러올 파일명 : ");
 		String fName = sc.next();
 		try(BufferedReader br = new BufferedReader(new FileReader(fName))){
-			
+			while((line = br.readLine()) != null) {
+				sb.append(line).append("\n");
+			}
+			System.out.println(sb.toString());
 		} catch (FileNotFoundException e) {
 			System.out.println(fName+" 파일을 찾을 수 없습니다.");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 	}
 	public void fileEdit() {
-		
+		StringBuilder sb = new StringBuilder();
+		System.out.print("수정 할 파일명 : ");
+		String fName = sc.next();
+		try(BufferedWriter bw = new BufferedWriter(new FileWriter(fName,true))){
+			System.out.println("파일에 추가할 내용을 입력하시오.");
+			String line = null;
+			while(!(line = sc.nextLine()).equals("exit")) {
+				sb.append(line).append("\n");
+			}
+			System.out.print("변경된 내용을 파일에 추가하시겠습니까? (y/n) : ");
+			if((sc.nextLine().toLowerCase().charAt(0) == 'y')) {
+				bw.write(sb.toString());
+				System.out.println(fName+"파일의 내용이 변경되었습니다.\n");
+			}
+				
+		} catch (FileNotFoundException e) {
+			System.out.println(fName+" 파일을 찾을 수 없습니다.\n");
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 	}
 	
 	// test
 	public boolean fileCheck(String title) {
 		char[] tc = title.toCharArray();
 		for(int i = 0; i < tc.length; i++) {
-			if(!(Character.isLetterOrDigit(tc[i]))) {
+			if(!(Character.isLetterOrDigit(tc[i]) || tc[i] == '.')) {
 				return false;
 			}
 		}
