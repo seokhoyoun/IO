@@ -1,9 +1,14 @@
 package rewind.io;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class Book {
+public class Book implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -555463564591356579L;
 	private String title;
 	private String author;
 	private int price;
