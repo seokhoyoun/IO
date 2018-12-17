@@ -45,7 +45,7 @@ public class MyNote {
 				System.out.println(fName + " 파일에 성공적으로 저장하였습니다.\n");
 			}catch (IOException e) {
 				e.printStackTrace();
-			} 
+			} //
 			
 		}
 	
